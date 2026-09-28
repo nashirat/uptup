@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kalkulator UP/TUP</title>
+    <link rel="icon" type="image/png" href="/assets/logo-kemenkeu.png" />
     <script src="/assets/tailwind-3.4.17.js"></script>
     <script src="/assets/xlsx-0.18.5.min.js"></script>
     <style>@font-face{font-family:Inter;src:url("assets/inter.woff2") format("woff2");font-display:swap}</style>
@@ -977,7 +978,9 @@
           } else if (jenis === "GUP") {
             if (tanggal) {
               const d = new Date(tanggal);
-              d.setDate(d.getDate() + daysInMonthOfDate(tanggal));
+              const days = typeof hariBulanPrev === "number"
+                ? hariBulanPrev : daysInMonthOfDate(tanggal);
+              d.setUTCDate(d.getUTCDate() + days);
               tglMaksGUP = d;
             } else {
               tglMaksGUP = "-";
